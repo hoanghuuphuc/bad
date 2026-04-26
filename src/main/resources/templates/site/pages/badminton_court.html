@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{/site/layout/main :: dynamic(~{::main})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Sân Cầu Lông</title>
+</head>
+
+<body>
+<div th:fragment="main" class="flex flex-col lg:flex-row gap-6 h-full">
+
+    <!-- SIDEBAR -->
+    <aside class="hidden lg:block w-72 sticky top-20 h-[calc(100vh-80px)] overflow-y-auto p-6 bg-white shadow-xl rounded-3xl">
+
+        <h3 class="font-bold text-lg mb-6">🔍 Bộ lọc</h3>
+
+        <input type="text" placeholder="Tìm sân..."
+               class="w-full mb-6 px-4 py-3 border rounded-xl focus:ring-2 focus:ring-primary">
+
+        <div class="mb-6">
+            <p class="font-semibold mb-3">Quận</p>
+            <div class="space-y-2 text-sm">
+                <label><input type="checkbox"> Quận 1</label><br>
+                <label><input type="checkbox"> Quận 7</label><br>
+                <label><input type="checkbox"> Thủ Đức</label>
+            </div>
+        </div>
+
+        <div class="mb-6">
+            <p class="font-semibold mb-3">Giá</p>
+            <select class="w-full px-3 py-2 border rounded-xl">
+                <option>Tất cả</option>
+                <option>< 200k</option>
+                <option>200k - 400k</option>
+            </select>
+        </div>
+
+        <button class="w-full bg-primary text-white py-3 rounded-xl font-bold">
+            Tìm sân
+        </button>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="flex-1 overflow-y-auto p-6">
+
+        <!-- HEADER -->
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-10 gap-4">
+            <div>
+                <h1 class="text-3xl font-bold">🏸 Tìm sân cầu lông</h1>
+                <p class="text-gray-500">200+ sân tại TP.HCM</p>
+            </div>
+
+            <button class="bg-green-500 text-white px-6 py-3 rounded-xl font-bold">
+                ➕ Thêm sân
+            </button>
+        </div>
+
+        <!-- SEARCH -->
+        <div class="flex flex-col lg:flex-row gap-4 mb-10">
+            <input type="text"
+                   placeholder="Tìm theo tên, địa chỉ..."
+                   class="flex-1 px-6 py-4 border rounded-2xl focus:ring-2 focus:ring-primary">
+
+            <div class="flex gap-2">
+                <button class="px-6 py-3 bg-gray-100 rounded-xl">Danh sách</button>
+                <button class="px-6 py-3 bg-primary text-white rounded-xl">Bản đồ</button>
+            </div>
+        </div>
+
+        <!-- GRID -->
+        <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-6 items-stretch">
+
+            <!-- LOOP -->
+            <div th:each="c : ${court}"
+                 class="bg-white rounded-3xl shadow-lg p-6 flex flex-col h-full hover:shadow-xl transition">
+
+                <!-- CONTENT -->
+                <div class="flex-1">
+                    <img src="https://tse1.mm.bing.net/th/id/OIP.HVWQqSJs7u-JO1vi-xtMcwHaEg?pid=Api&P=0&h=220" class="w-full h-52 object-cover rounded-xl mb-4">
+
+                    <div class="flex justify-between mb-3">
+                        <div>
+                            <h3 class="font-bold text-lg" th:text="${c.name}">Tên sân</h3>
+                            <p class="text-sm text-gray-500" th:text="${c.district}">Quận</p>
+                        </div>
+                        <!-- Rating fake -->
+                        <div>⭐⭐⭐⭐⭐</div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2 mb-6 text-sm">
+                <span class="bg-green-100 px-2 py-1 rounded"
+                      th:text="${#numbers.formatDecimal(c.pricePerHour, 0, 'COMMA', 0, 'POINT')} + ' VND'">
+                    200k
+                </span>
+
+                        <span class="bg-blue-100 px-2 py-1 rounded"
+                              th:text="${c.type}">
+                    Indoor
+                </span>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="flex gap-3 mt-auto">
+                    <button class="flex-1 bg-green-500 text-white py-3 rounded-xl font-bold">
+                        Đặt sân
+                    </button>
+
+                    <button class="px-4 bg-gray-100 rounded-xl">
+                        👁
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</div>
+</body>
+</html>

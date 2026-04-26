@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+
+    background: linear-gradient(135deg, #0f172a, #1e1b4b);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===== CARD ===== */
+.login-container {
+    width: 380px;
+    background: #1e293b;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+/* ===== TITLE ===== */
+.login-container h1 {
+    margin-bottom: 20px;
+    color: #facc15;
+}
+
+/* ===== INPUT ===== */
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-group label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #0f172a;
+    color: #fff;
+}
+
+/* ===== BUTTON ===== */
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background: #facc15;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.2s;
+}
+
+.login-btn:hover {
+    background: #eab308;
+}
+
+/* ===== FOOTER ===== */
+.login-footer {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.login-footer a {
+    color: #3b82f6;
+    cursor: pointer;
+}
+
+/* ===== LOGO ===== */
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #facc15;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,96 @@
+<nav class="sticky top-0 z-50 backdrop-blur-xl bg-white/70 border-b border-white/30 shadow-sm">
+
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-6 py-2.5">
+
+    <!-- Logo -->
+    <div class="text-lg md:text-xl font-bold text-primary whitespace-nowrap">
+      🏸 Giao lưu
+    </div>
+
+    <!-- Tabs -->
+    <div class="hidden md:flex items-center bg-white/60 backdrop-blur-lg border border-white/30 rounded-full p-1 shadow-inner">
+
+      <!-- KÈO -->
+      <a href="/"
+         th:classappend="${activeTab == 'keo'} ? 'bg-primary text-white shadow' : 'text-gray-600 hover:text-black'"
+         class="px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200">
+        Tìm kèo
+      </a>
+
+      <!-- SÂN -->
+      <a href="/court"
+         th:classappend="${activeTab == 'court'} ? 'bg-primary text-white shadow' : 'text-gray-600 hover:text-black'"
+         class="px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200">
+        Sân
+      </a>
+
+      <!-- XẾP HẠNG -->
+      <a href="/xephang"
+         th:classappend="${activeTab == 'xephang'} ? 'bg-primary text-white shadow' : 'text-gray-600 hover:text-black'"
+         class="px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200">
+        Xếp hạng
+      </a>
+
+    </div>
+
+    <!-- Right -->
+    <div class="flex items-center gap-3">
+
+      <div class="hidden md:flex items-center text-xs text-gray-500">
+        📍 TP.HCM
+      </div>
+
+      <button class="hidden md:block px-3 py-1.5 text-xs bg-white/70 border border-gray-200 rounded-full hover:bg-gray-100 transition">
+        Góp ý
+      </button>
+
+      <div class="flex items-center gap-3">
+
+        <!-- CHƯA LOGIN -->
+        <div sec:authorize="isAnonymous()">
+          <a href="/auth/signin"
+             class="px-4 py-1.5 text-sm bg-primary text-white rounded-full shadow hover:bg-secondary transition">
+            Đăng nhập
+          </a>
+        </div>
+
+        <!-- ĐÃ LOGIN -->
+        <div sec:authorize="isAuthenticated()" class="relative">
+
+          <!-- Avatar -->
+          <button onclick="toggleUserMenu()"
+                  class="flex items-center gap-2 px-2 py-1.5 rounded-full hover:bg-white/60 transition">
+
+            <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white text-sm font-semibold">
+              <span th:text="${#authentication.name.substring(0,1).toUpperCase()}">A</span>
+            </div>
+
+            <span class="hidden md:block text-sm font-medium text-gray-700"
+                  th:text="${#authentication.name}">User</span>
+          </button>
+
+          <!-- Dropdown -->
+          <div id="userDropdown"
+               class="hidden absolute right-0 mt-2 w-48 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-50">
+
+            <a href="/profile"
+               class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition">
+              👤 Trang cá nhân
+            </a>
+
+            <form th:action="@{/auth/signout}" method="post">
+              <button type="submit"
+                      class="w-full text-left px-4 py-3 text-sm text-red-500 hover:bg-red-50 transition">
+                🚪 Đăng xuất
+              </button>
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</nav>

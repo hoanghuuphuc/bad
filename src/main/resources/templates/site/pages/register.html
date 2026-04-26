@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký - 🏸 Giao lưu Cầu Lông</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#1E40AF',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .shake { animation: shake 0.5s ease-in-out; }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        .strength-weak { background: linear-gradient(to right, #ef4444, #f87171); }
+        .strength-medium { background: linear-gradient(to right, #f59e0b, #fbbf24); }
+        .strength-strong { background: linear-gradient(to right, #10b981, #34d399); }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-emerald-50 to-green-100 min-h-screen flex items-center justify-center py-12 px-4">
+<div class="max-w-md w-full bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-gray-100">
+    <!-- Logo & Title -->
+    <div class="text-center mb-8">
+        <div class="w-20 h-20 bg-emerald-500/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <span class="text-3xl">🏸</span>
+        </div>
+        <h1 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent mb-2">
+            Đăng ký tài khoản
+        </h1>
+        <p class="text-gray-500">Tham gia cộng đồng cầu lông ngay hôm nay!</p>
+    </div>
+
+    <!-- Register Form -->
+    <form action="/register" id="registerForm" class="space-y-6" method="post">
+        <!-- Email/Tài khoản -->
+        <div>
+            <label for="account" class="block text-sm font-medium text-gray-700 mb-2">Email hoặc Tài khoản *</label>
+            <input
+                    type="text"
+                    id="account"
+                    name="account"
+                    required
+                    minlength="3"
+                    placeholder="Nhập email hoặc tên tài khoản"
+                    class="w-full px-4 py-4 border border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-primary/20 focus:border-primary text-lg transition duration-200"
+            >
+            <p id="accountError" class="mt-1 text-sm text-red-500 hidden">Tài khoản phải có ít nhất 3 ký tự và chưa tồn tại</p>
+        </div>
+
+        <!-- Password -->
+        <div>
+            <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Mật khẩu * (Tối thiểu 8 ký tự)</label>
+            <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    required
+                    minlength="8"
+                    placeholder="Tạo mật khẩu mạnh"
+                    class="w-full px-4 py-4 border border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-primary/20 focus:border-primary text-lg transition duration-200"
+            >
+            <div id="passwordStrength" class="w-full bg-gray-200 rounded-xl h-2 mt-2 hidden">
+                <div id="strengthBar" class="h-2 rounded-xl transition-all duration-300"></div>
+            </div>
+            <p id="passwordError" class="mt-1 text-sm text-red-500 hidden">Mật khẩu phải có ít nhất 8 ký tự (chữ hoa, thường, số)</p>
+            <div id="passwordRules" class="mt-2 space-y-1 text-xs text-gray-500 hidden">
+                <label class="flex items-center"><span class="w-4 h-4 bg-red-400 rounded-full mr-2"></span>Ít nhất 8 ký tự</label>
+                <label class="flex items-center"><span class="w-4 h-4 bg-red-400 rounded-full mr-2"></span>Chữ hoa (A-Z)</label>
+                <label class="flex items-center"><span class="w-4 h-4 bg-red-400 rounded-full mr-2"></span>Chữ thường (a-z)</label>
+                <label class="flex items-center"><span class="w-4 h-4 bg-red-400 rounded-full mr-2"></span>Số (0-9)</label>
+            </div>
+        </div>
+
+        <!-- Confirm Password -->
+        <div>
+            <label for="confirmPassword" class="block text-sm font-medium text-gray-700 mb-2">Xác nhận mật khẩu *</label>
+            <input
+                    type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    required
+                    placeholder="Nhập lại mật khẩu"
+                    class="w-full px-4 py-4 border border-gray-200 rounded-2xl focus:outline-none focus:ring-4 focus:ring-primary/20 focus:border-primary text-lg transition duration-200"
+            >
+            <p id="confirmError" class="mt-1 text-sm text-red-500 hidden">Mật khẩu xác nhận không khớp</p>
+        </div>
+
+        <!-- Register Button -->
+        <button
+                type="submit"
+
+
+                class="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 text-white py-4 px-8 rounded-2xl font-semibold text-lg shadow-xl opacity-50 cursor-not-allowed transition-all duration-200"
+        >
+            Tạo tài khoản
+        </button>
+    </form>
+
+    <!-- Login Link -->
+    <div class="text-center mt-8 pt-8 border-t border-gray-100">
+        <p class="text-sm text-gray-600 mb-4">Đã có tài khoản?</p>
+        <a href="login.html" class="inline-flex items-center text-primary hover:text-secondary font-semibold text-lg group">
+            Đăng nhập ngay
+            <svg class="ml-1 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+        </a>
+    </div>
+</div>
+
+<!--<script>-->
+<!--    document.addEventListener('DOMContentLoaded', function() {-->
+<!--        const form = document.getElementById('registerForm');-->
+<!--        const registerBtn = document.getElementById('registerBtn');-->
+<!--        const accountInput = document.getElementById('account');-->
+<!--        const passwordInput = document.getElementById('password');-->
+<!--        const confirmInput = document.getElementById('confirmPassword');-->
+<!--        const strengthBar = document.getElementById('strengthBar');-->
+<!--        const strengthContainer = document.getElementById('passwordStrength');-->
+<!--        const rulesContainer = document.getElementById('passwordRules');-->
+<!--        const ruleChecks = rulesContainer.querySelectorAll('span');-->
+
+<!--        // Load existing users from localStorage-->
+<!--        function getUsers() {-->
+<!--            return JSON.parse(localStorage.getItem('badmintonUsers') || '[]');-->
+<!--        }-->
+
+<!--        // Password strength check-->
+<!--        function checkPasswordStrength(password) {-->
+<!--            const hasLength = password.length >= 8;-->
+<!--            const hasUpper = /[A-Z]/.test(password);-->
+<!--            const hasLower = /[a-z]/.test(password);-->
+<!--            const hasDigit = /\d/.test(password);-->
+<!--            const score = [hasLength, hasUpper, hasLower, hasDigit].filter(Boolean).length;-->
+
+<!--            // Update rules-->
+<!--            ruleChecks[0].className = hasLength ? 'w-4 h-4 bg-green-400 rounded-full mr-2' : 'w-4 h-4 bg-red-400 rounded-full mr-2';-->
+<!--            ruleChecks[1].className = hasUpper ? 'w-4 h-4 bg-green-400 rounded-full mr-2' : 'w-4 h-4 bg-red-400 rounded-full mr-2';-->
+<!--            ruleChecks[2].className = hasLower ? 'w-4 h-4 bg-green-400 rounded-full mr-2' : 'w-4 h-4 bg-red-400 rounded-full mr-2';-->
+<!--            ruleChecks[3].className = hasDigit ? 'w-4 h-4 bg-green-400 rounded-full mr-2' : 'w-4 h-4 bg-red-400 rounded-full mr-2';-->
+
+<!--            strengthContainer.classList.remove('hidden');-->
+<!--            rulesContainer.classList.remove('hidden');-->
+
+<!--            let width = 0, className = '';-->
+<!--            if (score === 4) {-->
+<!--                width = '100%';-->
+<!--                className = 'strength-strong';-->
+<!--            } else if (score >= 3) {-->
+<!--                width = '75%';-->
+<!--                className = 'strength-medium';-->
+<!--            } else {-->
+<!--                width = (score / 4) * 100 + '%';-->
+<!--                className = 'strength-weak';-->
+<!--            }-->
+
+<!--            strengthBar.style.width = width;-->
+<!--            strengthBar.className = `h-2 rounded-xl ${className}`;-->
+<!--        }-->
+
+<!--        // Real-time validation-->
+<!--        passwordInput.addEventListener('input', function() {-->
+<!--            checkPasswordStrength(this.value);-->
+<!--        });-->
+
+<!--        // Check if all valid-->
+<!--        function isFormValid() {-->
+<!--            const users = getUsers();-->
+<!--            const account = accountInput.value.trim();-->
+<!--            const password = passwordInput.value;-->
+<!--            const confirm = confirmInput.value;-->
+
+<!--            const accountExists = users.some(user => user.account.toLowerCase() === account.toLowerCase());-->
+<!--            const passwordValid = password.length >= 8 && /[A-Z]/.test(password) && /[a-z]/.test(password) && /\d/.test(password);-->
+<!--            const passwordsMatch = password === confirm;-->
+
+<!--            return !accountExists && passwordValid && passwordsMatch && account.length >= 3;-->
+<!--        }-->
+
+<!--        // Update button state-->
+<!--        ['input', 'keyup'].forEach(event => {-->
+<!--            [accountInput, passwordInput, confirmInput].forEach(input => {-->
+<!--                input.addEventListener(event, function() {-->
+<!--                    if (isFormValid()) {-->
+<!--                        registerBtn.disabled = false;-->
+<!--                        registerBtn.classList.remove('opacity-50', 'cursor-not-allowed');-->
+<!--                        registerBtn.classList.add('hover:shadow-2xl', 'hover:from-emerald-600', 'hover:to-emerald-700', 'hover:-translate-y-1');-->
+<!--                    } else {-->
+<!--                        registerBtn.disabled = true;-->
+<!--                        registerBtn.classList.add('opacity-50', 'cursor-not-allowed');-->
+<!--                        registerBtn.classList.remove('hover:shadow-2xl', 'hover:from-emerald-600', 'hover:to-emerald-700', 'hover:-translate-y-1');-->
+<!--                    }-->
+<!--                });-->
+<!--            });-->
+<!--        });-->
+
+<!--        form.addEventListener('submit', function(e) {-->
+<!--            e.preventDefault();-->
+
+<!--            // Clear errors and shake-->
+<!--            document.querySelectorAll('[id$="Error"]').forEach(el => el.classList.add('hidden'));-->
+<!--            document.querySelectorAll('.shake').forEach(el => el.classList.remove('shake', 'border-red-300'));-->
+
+<!--            const account = accountInput.value.trim();-->
+<!--            const password = passwordInput.value;-->
+<!--            const confirm = confirmInput.value;-->
+
+<!--            let valid = true;-->
+
+<!--            // Account validation-->
+<!--            const users = getUsers();-->
+<!--            if (users.some(user => user.account.toLowerCase() === account.toLowerCase())) {-->
+<!--                accountInput.classList.add('shake', 'border-red-300');-->
+<!--                document.getElementById('accountError').classList.remove('hidden');-->
+<!--                valid = false;-->
+<!--            } else if (account.length < 3) {-->
+<!--                accountInput.classList.add('shake', 'border-red-300');-->
+<!--                document.getElementById('accountError').textContent = 'Tài khoản phải có ít nhất 3 ký tự';-->
+<!--                document.getElementById('accountError').classList.remove('hidden');-->
+<!--                valid = false;-->
+<!--            }-->
+
+<!--            // Password validation-->
+<!--            const passwordValid = password.length >= 8 && /[A-Z]/.test(password) && /[a-z]/.test(password) && /\d/.test(password);-->
+<!--            if (!passwordValid) {-->
+<!--                passwordInput.classList.add('shake', 'border-red-300');-->
+<!--                document.getElementById('passwordError').classList.remove('hidden');-->
+<!--                valid = false;-->
+<!--            }-->
+
+<!--            // Confirm match-->
+<!--            if (password !== confirm) {-->
+<!--                confirmInput.classList.add('shake', 'border-red-300');-->
+<!--                document.getElementById('confirmError').classList.remove('hidden');-->
+<!--                valid = false;-->
+<!--            }-->
+
+<!--            if (!valid) return;-->
+
+<!--            // Save user-->
+<!--            const newUser = { account, password };-->
+<!--            users.push(newUser);-->
+<!--            localStorage.setItem('badmintonUsers', JSON.stringify(users));-->
+
+<!--            registerBtn.innerHTML = 'Tạo tài khoản thành công...';-->
+<!--            registerBtn.disabled = true;-->
+<!--            setTimeout(() => {-->
+<!--                window.location.href = 'register';-->
+<!--            }, 1500);-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
+</body>
+</html>
